@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { Job } from "../types";
 import Description from "./Description";
 import { ReactElement } from "react";
@@ -8,8 +10,14 @@ interface JobCardProps {
 }
 
 const JobCard = ({ job }: JobCardProps): ReactElement => {
+  const { ref, inView } = useInView({ threshold: 0.2 });
+
   return (
-    <div
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
       key={job.jdUid}
       className="bg-white rounded-3xl  p-6 border shadow-lg  hover:scale-[1.02] transition-all duration-300 ease-in-out max-w-[480px] max-sm:p-3 relative"
     >
@@ -57,7 +65,7 @@ const JobCard = ({ job }: JobCardProps): ReactElement => {
         <IoPersonCircle className="size-7 text-gray-100" />
         Ask for referral
       </button>
-    </div>
+    </motion.div>
   );
 };
 
