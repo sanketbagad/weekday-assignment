@@ -16,17 +16,7 @@ const style = {
   pb: 3,
 };
 
-/**
- * Description
- *
- * Component to render job description
- * @param {string} jobDetailsFromCompany - Job description from company
- * @returns {JSX.Element} - React component
- *
- * @example
- *
- * <Description jobDetailsFromCompany={job.jobDetailsFromCompany} />
- */
+
 export default function Description({
   jobDetailsFromCompany,
 }: {
